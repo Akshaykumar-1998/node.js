@@ -16,6 +16,7 @@ app.post('/api/greet', (req, res) => {
   res.json({ message: `Hello, ${name}!` });
 });
 
+// Registration endpoint
 app.post('/api/register', (req, res) => {
   const { name, email, number } = req.body;
 
@@ -32,7 +33,8 @@ app.post('/api/register', (req, res) => {
   });
 });
 
-
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Production URL: https://unable-merrile-akshay1518-f99668a8.koyeb.app`);
 });

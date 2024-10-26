@@ -1,16 +1,11 @@
 const express = require('express');
-const db = require('./firebaseConfig'); // Import Firebase configuration
 const cors = require('cors'); // Import CORS middleware
+const db = require('./firebaseConfig'); // Import Firebase configuration
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors()); // Use CORS middleware
+app.use(cors()); // Enable CORS
 app.use(express.json()); // Middleware to parse JSON bodies
-
-// Sample GET endpoint
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from Koyeb with Firebase!' });
-});
 
 // Registration endpoint using Firebase Realtime Database
 app.post('/api/register', async (req, res) => {
@@ -40,5 +35,5 @@ app.post('/api/register', async (req, res) => {
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
-  console.log(`Production URL: https://your-koyeb-url.koyeb.app`); // Replace with your actual production URL
+  console.log(`Production URL: https://your-koyeb-url.koyeb.app`); // Update with your actual production URL
 });

@@ -1,9 +1,10 @@
-// index.js
 const express = require('express');
 const db = require('./firebaseConfig'); // Import Firebase configuration
+const cors = require('cors'); // Import CORS middleware
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors()); // Use CORS middleware
 app.use(express.json()); // Middleware to parse JSON bodies
 
 // Sample GET endpoint
@@ -39,5 +40,5 @@ app.post('/api/register', async (req, res) => {
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
-  console.log(`Production URL: https://your-koyeb-url.koyeb.app`); // Update with your actual production URL
+  console.log(`Production URL: https://your-koyeb-url.koyeb.app`); // Replace with your actual production URL
 });

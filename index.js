@@ -1,8 +1,21 @@
-const http = require("http");
+// index.js
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
 
-const myServer = http.createServer((req, res) => {
-    console.log("New Req Rec.", req.headers);  
-    res.end('Hello From server');
+app.use(express.json()); // Middleware to parse JSON bodies
+
+// Sample GET endpoint
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from Koyeb!' });
 });
 
-myServer.listen(8000, () => console.log("Server Started"));
+// Sample POST endpoint
+app.post('/api/greet', (req, res) => {
+  const { name } = req.body;
+  res.json({ message: `Hello, ${name}!` });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

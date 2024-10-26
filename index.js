@@ -13,6 +13,9 @@ app.get('/api/hello', (req, res) => {
 // Sample POST endpoint
 app.post('/api/greet', (req, res) => {
   const { name } = req.body;
+  if (!name) {
+    return res.status(400).json({ error: 'Name is required' });
+  }
   res.json({ message: `Hello, ${name}!` });
 });
 
@@ -20,7 +23,9 @@ app.post('/api/greet', (req, res) => {
 app.post('/api/register', (req, res) => {
   const { name, email, number } = req.body;
 
-  // Here you would typically save the user data to a database
+  if (!name || !email || !number) {
+    return res.status(400).json({ error: 'Name, email, and number are required' });
+  }
 
   // Respond with the received data (or you can respond with a success message)
   res.json({
@@ -28,8 +33,8 @@ app.post('/api/register', (req, res) => {
     user: {
       name,
       email,
-      number
-    }
+      number,
+    },
   });
 });
 

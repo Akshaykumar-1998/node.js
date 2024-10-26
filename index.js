@@ -16,6 +16,23 @@ app.post('/api/greet', (req, res) => {
   res.json({ message: `Hello, ${name}!` });
 });
 
+app.post('/api/register', (req, res) => {
+  const { name, email, number } = req.body;
+
+  // Here you would typically save the user data to a database
+
+  // Respond with the received data (or you can respond with a success message)
+  res.json({
+    message: 'Registration successful!',
+    user: {
+      name,
+      email,
+      number
+    }
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
